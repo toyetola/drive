@@ -192,6 +192,25 @@
         headers:
             {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
     });
+
+    $(document).on('click', '.l', function(){
+        var kl = $(this).data('link');
+//        alert(kl);
+        $('#shareIt').val('http://localhost:8000'+kl);
+    });
+
+    $('#copy').click(function () {
+        /* $('').val();*/
+        var g = $('#shareIt').val();
+        $('#shareIt').select();
+        document.execCommand("copy");
+        if(document.execCommand("copy")) {
+            alert('copied');
+        }else{
+            alert('cannot copy');
+        }
+    });
+
 $(document).on('click', '.d', function () {
 
     var u = $(this).closest('tr').find('td:nth-child(2) a').text();
